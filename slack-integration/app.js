@@ -13,7 +13,10 @@ const redisClient = redis.createClient(process.env.REDIS_PORT,
 const {promisify} = require('util');
 const redisGetAsync = promisify(redisClient.get).bind(redisClient);
 
-//Check https://api.slack.com/tutorials/tunneling-with-ngrok
+//****************************************************************************/
+// See the reference: 
+//            https://api.slack.com/tutorials/tunneling-with-ngrok
+//****************************************************************************/
 
 // Instantiates Express and assigns app variable to it
 const app = express();
@@ -34,25 +37,27 @@ redisClient.on("error", function (err) {
 
 // Lets start server
 app.listen(PORT, function () {
-    //Callback triggered when server is successfully listening. Hurray!
     console.log("App listening on port " + PORT);
 });
 
-// This route handles GET requests to our root ngrok address and responds with the same "Ngrok is working message" we used before
+// This route handles GET requests to our root ngrok address.
 app.get('/', function(req, res) { 
     console.log('Hello from space! Ngrok is working!');
     res.send('Hello from space! Ngrok is working! Path Hit: ' + req.url);
 });
 
-// This route handles get request to a /oauth endpoint. We'll use this endpoint for handling the logic of the Slack oAuth process behind our app.
+// This route handles get request to a /oauth endpoint. 
+// We'll use this endpoint for handling the logic of the Slack oAuth process behind our app.
 app.get('/oauth', function(req, res) {
-    // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, we respond with an error message
+    // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. 
+    // If that code is not there, we respond with an error message
     if (!req.query.code) {
         res.status(500);
         res.send({"Error": "Looks like we're not getting code."});
         console.log("Looks like we're not getting code.");
     } else {
-        // We'll do a GET call to Slack's `oauth.access` endpoint, passing our app's client ID, client secret, and the code we just got as query parameters.
+        // We'll do a GET call to Slack's `oauth.access` endpoint, passing our app's client ID, 
+        // client secret, and the code we just got as query parameters.
         request({
             url: 'https://slack.com/api/oauth.access', //URL to hit
             qs: {  //Query string data
