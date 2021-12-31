@@ -11,6 +11,7 @@ ___
 - Web cam (USB 3.0)
 - [Slack](https://slack.com/) channel 
 
+Check [instructions.txt](./docs/instructions.txt) for installation details.
 ___
 
 ### Overview
