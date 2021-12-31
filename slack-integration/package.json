@@ -1,7 +1,7 @@
 {
-  "name": "botserver",
+  "name": "slack-integration",
   "version": "1.0.0",
-  "description": "Integration for slack and python queue tracker",
+  "description": "Provide API for Slack to request queue state.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
