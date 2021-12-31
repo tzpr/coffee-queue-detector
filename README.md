@@ -3,19 +3,21 @@ Tired queueing in the coffee machine? Put the **coffee queue detector** to your 
 
 ![coffee queue detector architecture](./docs/slack-ui-2.png)
 
+___
 
+### Things needed
 
-### Things needed:
+- [NVIDIA Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
+- Web cam (USB 3.0)
+- [Slack](https://slack.com/) channel 
 
-- [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
-- Web cam
-- [Slack](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) channel 
+___
 
-
-### Components
+### Overview
 
 ![coffee queue detector architecture](./docs/coffee-queue-detector-architecture.png)
 
+___
 
 ### Runtime
 
